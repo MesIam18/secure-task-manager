@@ -70,3 +70,24 @@ function addTask(taskText) {
 addTaskBtn.addEventListener("click", () => {
   addTask(taskInput.value);
 });
+
+function loadSampleTasks() {
+  const sampleTasks = [
+    "Review DOM selectors",
+    "Practice createElement",
+    "Study event delegation"
+  ];
+
+  const fragment = document.createDocumentFragment();
+
+  sampleTasks.forEach((text) => {
+    const taskId = `task-${taskIdCounter++}`;
+    const taskElement = createTaskElement(text, taskId);
+    fragment.appendChild(taskElement);
+  });
+
+  taskList.appendChild(fragment);
+  updateTaskCounts();
+}
+
+loadSamplesBtn.addEventListener("click", loadSampleTasks);
