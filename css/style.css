@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.task-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#taskMessage {
+  color: red;
+  min-height: 1.2em;
+  margin: 5px 0 15px 0;
+}
+
+.summary {
+  display: flex;
+  gap: 20px;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#taskList {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-text {
+  flex-grow: 1;
+}
+
+.edit-input {
+  flex-grow: 1;
+  padding: 4px;
+}
