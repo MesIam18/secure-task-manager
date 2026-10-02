@@ -18,3 +18,55 @@ function updateTaskCounts() {
   completedCount.textContent = completedTasks.length;
   pendingCount.textContent = pendingTasks.length;
 }
+
+function createTaskElement(taskText, taskId) {
+  const li = document.createElement("li");
+  li.className = "task-item";
+  li.dataset.taskId = taskId;
+  li.dataset.state = "pending";
+
+  const span = document.createElement("span");
+  span.className = "task-text";
+  span.textContent = taskText;
+
+  const completeBtn = document.createElement("button");
+  completeBtn.className = "complete-btn";
+  completeBtn.textContent = "Complete";
+
+  const editBtn = document.createElement("button");
+  editBtn.className = "edit-btn";
+  editBtn.textContent = "Edit";
+
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "remove-btn";
+  removeBtn.textContent = "Remove";
+
+  li.appendChild(span);
+  li.appendChild(completeBtn);
+  li.appendChild(editBtn);
+  li.appendChild(removeBtn);
+
+  return li;
+}
+
+function addTask(taskText) {
+  const trimmedText = taskText.trim();
+
+  if (!trimmedText) {
+    taskMessage.textContent = "Task cannot be empty";
+    return;
+  }
+
+  taskMessage.textContent = "";
+
+  const taskId = `task-${taskIdCounter++}`;
+  const newTaskItem = createTaskElement(trimmedText, taskId);
+
+  taskList.appendChild(newTaskItem);
+  taskInput.value = "";
+  updateTaskCounts();
+}
+
+addTaskBtn.addEventListener("click", () => {
+  addTask(taskInput.value);
+});
